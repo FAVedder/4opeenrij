@@ -17,6 +17,7 @@ public class NieuwSpelMenuController {
         speler2 = nieuwSpelMenu.getSpeler2();
         Speelveld speelveld = new Speelveld();
         speelveld.clearSpeelVeld();
+        speelveld.setBeurt(Speelveld.Beurt.SPELER1);
         spelController.start(speler1, speler2, speelveld);
     }
     

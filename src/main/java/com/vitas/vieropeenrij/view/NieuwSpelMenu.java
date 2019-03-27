@@ -8,17 +8,20 @@ public class NieuwSpelMenu {
 
     private Speler speler1;
     private Speler speler2;
+    String spelerNaam1;
+    String spelerNaam2;
     
     public void menu() {
-        try (Scanner in = new Scanner(System.in)) {         
-        System.out.print("Voer naam speler 1 in: ");
-        String spelerNaam1 = in.nextLine();
+        Scanner in = new Scanner(System.in);
+        try {         
+            System.out.print("Voer naam speler 1 in: ");
+            spelerNaam1 = in.nextLine();
         
-        System.out.print("Voer naam speler 2 in: ");
-        String spelerNaam2 = in.nextLine();
+            System.out.print("Voer naam speler 2 in: ");
+            spelerNaam2 = in.nextLine();
         
-        maakSpelers(spelerNaam1, spelerNaam2);
-        }
+            maakSpelers(spelerNaam1, spelerNaam2);
+        } 
         catch(InputMismatchException e) {
             System.out.println("Voer een geldige naam in.");
             menu();
