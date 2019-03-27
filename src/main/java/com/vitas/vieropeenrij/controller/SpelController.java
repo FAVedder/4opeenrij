@@ -68,7 +68,7 @@ public class SpelController {
         int indexY = laatsteIndexY;
         
         //check horizontaal
-        while(indexY >= 0 && indexY < 6) {
+        HORIZONTAALCHECK: while(indexY >= 0 && indexY < 6) {
             
             for(int i = 0; i <=2; i++) {
                 
@@ -81,13 +81,29 @@ public class SpelController {
                             if(speelveld.getSpeelVeld()[indexI][--indexY] == spelerChar) {
                                 aantaloprij++;
                             } else {
-                                break;
+                                break HORIZONTAALCHECK;
                             }
                         }
-                        break;
+                        break HORIZONTAALCHECK;
                     }
                 } catch(ArrayIndexOutOfBoundsException e) {
-                    break;
+                    try {
+                        if(speelveld.getSpeelVeld()[indexI][--indexY] == spelerChar) {
+                            aantaloprij++;
+                        } else {
+                            indexY = laatsteIndexY;
+                            for(i = 0; i <=2; i++) {
+                                if(speelveld.getSpeelVeld()[indexI][++indexY] == spelerChar) {
+                                    aantaloprij++;
+                                } else {
+                                    break HORIZONTAALCHECK;
+                                }
+                            }
+                            break HORIZONTAALCHECK;
+                        }
+                    } catch(ArrayIndexOutOfBoundsException ex) {
+                        break HORIZONTAALCHECK;
+                    }    
                 }    
             }
             
