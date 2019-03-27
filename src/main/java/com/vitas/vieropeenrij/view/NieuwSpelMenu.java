@@ -10,9 +10,7 @@ public class NieuwSpelMenu {
     private Speler speler2;
     
     public void menu() {
-        Scanner in = new Scanner(System.in);
-        
-        try {         
+        try (Scanner in = new Scanner(System.in)) {         
         System.out.print("Voer naam speler 1 in: ");
         String spelerNaam1 = in.nextLine();
         

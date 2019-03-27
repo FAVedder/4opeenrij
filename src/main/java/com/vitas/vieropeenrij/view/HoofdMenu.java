@@ -17,9 +17,7 @@ public class HoofdMenu {
     }
 
     private void invoer() {
-        Scanner in = new Scanner(System.in);
-                
-        try {
+        try (Scanner in = new Scanner(System.in)){
             optie = in.nextInt();
             if(optie > 2 || optie < 1) {
             System.out.println("Kies een geldige optie.");
