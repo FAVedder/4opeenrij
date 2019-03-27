@@ -107,17 +107,71 @@ public class SpelController {
                 }    
             }
             
+            
+            
         }
-        
         System.out.println("Aantal op rij: " + aantaloprij);
-        
+            if (aantaloprij >= 4) {
+                gewonnen();
+            } else {
+                aantaloprij = 1;
+            }
+          
         //check verticaal
-        
+        VERTICAALCHECK: while(indexI >= 0 && indexI < 5) {
+            
+            for(int i = 0; i <=2; i++) {
+                
+                try {
+                    if(speelveld.getSpeelVeld()[++indexI][indexY] == spelerChar) {
+                        aantaloprij++;
+                    } else {
+                        indexI = laatsteIndexI;
+                        for(i = 0; i <=2; i++) {
+                            if(speelveld.getSpeelVeld()[--indexI][indexY] == spelerChar) {
+                                aantaloprij++;
+                            } else {
+                                break VERTICAALCHECK;
+                            }
+                        }
+                        break VERTICAALCHECK;
+                    }
+                } catch(ArrayIndexOutOfBoundsException e) {
+                    try {
+                        if(speelveld.getSpeelVeld()[--indexI][indexY] == spelerChar) {
+                            aantaloprij++;
+                        } else {
+                            indexI = laatsteIndexI;
+                            for(i = 0; i <=2; i++) {
+                                if(speelveld.getSpeelVeld()[++indexI][indexY] == spelerChar) {
+                                    aantaloprij++;
+                                } else {
+                                    break VERTICAALCHECK;
+                                }
+                            }
+                            break VERTICAALCHECK;
+                        }
+                    } catch(ArrayIndexOutOfBoundsException ex) {
+                        break VERTICAALCHECK;
+                    }    
+                }    
+            }
+            
+                        
+        }
+        System.out.println("Aantal op rij: " + aantaloprij);
+            if (aantaloprij >= 4) {
+                gewonnen();
+            } else {
+                aantaloprij = 1;
+            }
         
         //check diagonaal1
        
         
         //check diagonaal2
+        
+        
     }
     
     private void veranderBeurt() {
@@ -127,5 +181,9 @@ public class SpelController {
             speelveld.setBeurt(Speelveld.Beurt.SPELER1);
         }
         spelView.setSpeelveld(speelveld);
+    }
+    
+    public void gewonnen() {
+        //TODO
     }
 }
