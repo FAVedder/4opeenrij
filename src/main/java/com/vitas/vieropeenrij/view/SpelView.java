@@ -2,12 +2,15 @@ package com.vitas.vieropeenrij.view;
 
 import com.vitas.vieropeenrij.model.Speelveld;
 import com.vitas.vieropeenrij.model.Speler;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class SpelView {
 
     private Speler speler1;
     private Speler speler2;
     private Speelveld speelveld;
+    private int invoer;
     
     public SpelView(Speler speler1, Speler speler2, Speelveld speelveld) {
         this.speler1 = speler1;
@@ -15,21 +18,76 @@ public class SpelView {
         this.speelveld = speelveld;
     }
     
-    public void view() {
-        drawSpeelveld();
-    }
-    
-    private void drawSpeelveld() {
+    public void drawSpeelveld() {
+        String naamHuidigeSpeler;
+        
+         if(speelveld.getBeurt() == Speelveld.Beurt.SPELER1) {
+            naamHuidigeSpeler = speler1.getNaam();
+        } else {
+            naamHuidigeSpeler = speler2.getNaam(); 
+         }
+        
         System.out.printf("Speler 1: " + speler1.getNaam() + " (%3d) O\tSpeler 2: " + speler2.getNaam() + " (%3d) X\n", speler1.getScore(), speler2.getScore());
+        System.out.println("Aan de beurt: " + naamHuidigeSpeler);
         System.out.println("--------");
         System.out.printf("\t1\t2\t3\t4\t5\t6\t7\n");
         for(int i = 0; i <= speelveld.getSpeelVeld().length - 1; i++) {
             for(int y = 0; y <= speelveld.getSpeelVeld()[i].length - 1; y++) {
                 System.out.printf("\t" + speelveld.getSpeelVeld()[i][y]);
             }
-        System.out.printf("\n");    
+            System.out.printf("\n");    
+        }
+        System.out.println("--------");
+        
+    }
+    
+    public void invoer() {
+        Scanner in = new Scanner(System.in);
+        try {
+            System.out.println("Kies een kolom, of 0 om af te sluiten");
+            invoer = in.nextInt();
+            if(invoer > 7 || invoer < 0) {
+            System.out.println("Kies een geldige optie.");
+            invoer();
+            } 
+        } catch (InputMismatchException e) {
+            System.out.println("Voer een nummer in.");
+            invoer();
         }
         
     }
+
+    public Speler getSpeler1() {
+        return speler1;
+    }
+
+    public void setSpeler1(Speler speler1) {
+        this.speler1 = speler1;
+    }
+
+    public Speler getSpeler2() {
+        return speler2;
+    }
+
+    public void setSpeler2(Speler speler2) {
+        this.speler2 = speler2;
+    }
+
+    public Speelveld getSpeelveld() {
+        return speelveld;
+    }
+
+    public void setSpeelveld(Speelveld speelveld) {
+        this.speelveld = speelveld;
+    }
+
+    public int getInvoer() {
+        return invoer;
+    }
+
+    public void setInvoer(int invoer) {
+        this.invoer = invoer;
+    }
+    
     
 }
