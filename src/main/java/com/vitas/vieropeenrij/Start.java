@@ -1,9 +1,12 @@
 package com.vitas.vieropeenrij;
 
+import com.vitas.vieropeenrij.controller.HoofdMenuController;
+
 public class Start {
     
     public static void main(String[] args) {
-        System.out.println("Test");
+        HoofdMenuController hoofdMenuController = new HoofdMenuController();
+        hoofdMenuController.start();
     }
-    
+   
 }
