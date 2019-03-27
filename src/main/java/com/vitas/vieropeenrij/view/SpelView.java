@@ -49,6 +49,8 @@ public class SpelView {
             if(invoer > 7 || invoer < 0) {
             System.out.println("Kies een geldige optie.");
             invoer();
+            } else if (invoer == 0){
+                //doe niets
             } else if (speelveld.getSpeelVeld()[0][invoer - 1] == 'O' || speelveld.getSpeelVeld()[0][invoer - 1] == 'X'){
                 System.out.println("Kolom is vol, kies een andere.");
                 drawSpeelveld();
