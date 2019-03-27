@@ -12,8 +12,11 @@ public class HoofdMenuController {
         optie = hoofdMenu.getOptie();
         switch(optie) {
             case 1:
+                NieuwSpelMenuController nieuwSpelMenuController = new NieuwSpelMenuController();
+                nieuwSpelMenuController.start();
                 break;
             case 2:
+                System.exit(0);
                 break;
         }
     }
