@@ -68,134 +68,40 @@ public class SpelController {
         int indexY = laatsteIndexY;
         
         //check horizontaal
-        for(int i = 0; i <=2; i++) {
-            try {
-                if(speelveld.getSpeelVeld()[indexI][++indexY] == spelerChar) {
-                    aantaloprij++;
-                } else {
-                    indexY = laatsteIndexY;
-                    for(i = 0; i <=2; i++) {
-                        if(speelveld.getSpeelVeld()[indexI][--indexY] == spelerChar) {
-                            aantaloprij++;
-                        } else {
-                            break;
-                        }
-                    }
-                    break;
-                }
-            } catch(ArrayIndexOutOfBoundsException e) {
-                indexY = laatsteIndexY;
-                for(i = 0; i <=2; i++) {
-                    try {
-                        if(speelveld.getSpeelVeld()[indexI][--indexY] == spelerChar) {
+        while(indexY >= 0 && indexY < 6) {
+            
+            for(int i = 0; i <=2; i++) {
+                
+                try {
+                    if(speelveld.getSpeelVeld()[indexI][++indexY] == spelerChar) {
                         aantaloprij++;
-                        } else {
-                            break;
-                        }
-                    } catch(ArrayIndexOutOfBoundsException ex) {
-                        break;
-                    }    
-                }
-            } 
-        }    
-        
-        //check verticaal
-        for(int i = 0; i <=2; i++) {
-            try {
-                if(speelveld.getSpeelVeld()[++indexI][indexY] == spelerChar) {
-                    aantaloprij++;
-                } else {
-                    indexI = laatsteIndexI;
-                    for(i = 0; i <=2; i++) {
-                        if(speelveld.getSpeelVeld()[--indexI][indexY] == spelerChar) {
-                            aantaloprij++;
-                        } else {
-                            break;
-                        }
-                    }
-                    break;
-                }
-            } catch(ArrayIndexOutOfBoundsException e) {
-                indexI = laatsteIndexI;
-                for(i = 0; i <=2; i++) {
-                    if(speelveld.getSpeelVeld()[--indexI][indexY] == spelerChar) {
-                    aantaloprij++;
                     } else {
+                        indexY = laatsteIndexY;
+                        for(i = 0; i <=2; i++) {
+                            if(speelveld.getSpeelVeld()[indexI][--indexY] == spelerChar) {
+                                aantaloprij++;
+                            } else {
+                                break;
+                            }
+                        }
                         break;
                     }
-                }
-            } 
-        }    
-        
-        //check diagonaal1
-        for(int i = 0; i <=2; i++) {
-            try {
-                if(speelveld.getSpeelVeld()[--indexI][++indexY] == spelerChar) {
-                    aantaloprij++;
-                } else {
-                    indexI = laatsteIndexI;
-                    indexY = laatsteIndexY;
-                    for(i = 0; i <=2; i++) {
-                        if(speelveld.getSpeelVeld()[++indexI][--indexY] == spelerChar) {
-                            aantaloprij++;
-                        } else {
-                            break;
-                        }
-                    }
+                } catch(ArrayIndexOutOfBoundsException e) {
                     break;
-                }
-            } catch(ArrayIndexOutOfBoundsException e) {
-                try {
-                    indexI = laatsteIndexI;
-                    indexY = laatsteIndexY;
-                    for(i = 0; i <=2; i++) {
-                        if(speelveld.getSpeelVeld()[++indexI][--indexY] == spelerChar) {
-                        aantaloprij++;
-                        } else {
-                            break;
-                        }
-                    }
-                } catch(ArrayIndexOutOfBoundsException ex) {
-                    break;
-                }   
-            } 
-        }    
-        
-        //check diagonaal2
-        for(int i = 0; i <=2; i++) {
-            try {
-                if(speelveld.getSpeelVeld()[++indexI][++indexY] == spelerChar) {
-                    aantaloprij++;
-                } else {
-                    indexI = laatsteIndexI;
-                    indexY = laatsteIndexY;
-                    for(i = 0; i <=2; i++) {
-                        if(speelveld.getSpeelVeld()[--indexI][--indexY] == spelerChar) {
-                            aantaloprij++;
-                        } else {
-                            break;
-                        }
-                    }
-                    break;
-                }
-            } catch(ArrayIndexOutOfBoundsException e) {
-                try {
-                    indexI = laatsteIndexI;
-                    indexY = laatsteIndexY;
-                    for(i = 0; i <=2; i++) {
-                        if(speelveld.getSpeelVeld()[--indexI][--indexY] == spelerChar) {
-                        aantaloprij++;
-                        } else {
-                            break;
-                        }
-                    }
-                } catch(ArrayIndexOutOfBoundsException ex) {
-                    break;
-                }   
-            } 
+                }    
+            }
+            
         }
         
-        System.out.println(aantaloprij);
+        System.out.println("Aantal op rij: " + aantaloprij);
+        
+        //check verticaal
+        
+        
+        //check diagonaal1
+       
+        
+        //check diagonaal2
     }
     
     private void veranderBeurt() {
