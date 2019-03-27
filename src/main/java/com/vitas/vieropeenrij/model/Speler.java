@@ -1,6 +1,6 @@
 package com.vitas.vieropeenrij.model;
 
-public class Gebruiker {
+public class Speler {
     
     private String naam;
 
