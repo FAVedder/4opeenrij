@@ -4,6 +4,7 @@ public class Speler {
     
     private String naam;
     private int score;
+    private int beurten;
 
     public String getNaam() {
         return naam;
@@ -19,6 +20,14 @@ public class Speler {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public int getBeurten() {
+        return beurten;
+    }
+
+    public void setBeurten(int beurten) {
+        this.beurten = beurten;
     }
     
         

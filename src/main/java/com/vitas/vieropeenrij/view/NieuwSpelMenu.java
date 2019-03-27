@@ -32,10 +32,12 @@ public class NieuwSpelMenu {
         speler1 = new Speler();
         speler1.setNaam(spelerNaam1);
         speler1.setScore(0);
+        speler1.setBeurten(0);
         
         speler2 = new Speler();
         speler2.setNaam(spelerNaam2);
         speler2.setScore(0);
+        speler2.setBeurten(0);
     }
 
     public Speler getSpeler1() {
