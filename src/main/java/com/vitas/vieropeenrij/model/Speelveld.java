@@ -3,6 +3,8 @@ package com.vitas.vieropeenrij.model;
 public class Speelveld {
     
     private char[][] speelVeld = new char[6][7];
+    private Beurt beurt;
+    public enum Beurt {SPELER1, SPELER2} 
 
     public char[][] getSpeelVeld() {
         return speelVeld;
@@ -34,4 +36,11 @@ public class Speelveld {
             
     }
     
+    public Beurt getBeurt() {
+        return beurt;
+    }
+
+    public void setBeurt(Beurt beurt) {
+        this.beurt = beurt;
+    }
 }
