@@ -13,18 +13,17 @@ public class SpelController {
     private int laatsteIndexI;
     private int laatsteIndexY;
     private char spelerChar;
-       
-    
+
     public void start(Speler speler1, Speler speler2, Speelveld speelveld) {
         this.speler1 = speler1;
         this.speler2 = speler2;
         this.speelveld = speelveld;
         spelView = new SpelView(this.speler1, this.speler2, this.speelveld);
         spelloop();
-    }   
-    
+    }
+
     private void spelloop() {
-        while(true) {
+        while (true) {
             spelView.drawSpeelveld();
             spelView.invoer();
             int invoer = spelView.getInvoer();
@@ -33,17 +32,16 @@ public class SpelController {
             veranderBeurt();
         }
     }
-    
+
     private void verwerkInvoer(int invoer) {
         if (invoer == 0) {
             HoofdMenuController hoofdMenuController = new HoofdMenuController();
             hoofdMenuController.start();
         } else {
             invoer--;
-            
+
             char[][] speelveldArray = speelveld.getSpeelVeld();
-            
-            
+
             if (speelveld.getBeurt() == Speelveld.Beurt.SPELER1) {
                 spelerChar = 'O';
             } else {
@@ -61,129 +59,208 @@ public class SpelController {
 
         }
     }
-    
-     private void checkWinst() {
+
+    private void checkWinst() {
         int aantaloprij = 1;
         int indexI = laatsteIndexI;
         int indexY = laatsteIndexY;
         
+        System.out.println("laatsteIndexI = " + laatsteIndexI);
+        System.out.println("laatsteIndexY = " + laatsteIndexY);
+
         //check horizontaal
-        HORIZONTAALCHECK: while(indexY >= 0 && indexY < 6) {
-            
-            for(int i = 0; i <=2; i++) {
-                
+        HORIZONTAALCHECK:
+        while (indexY >= 0 && indexY < 6) {
+
+            for (int i = 0; i <= 2; i++) {
+
                 try {
-                    if(speelveld.getSpeelVeld()[indexI][++indexY] == spelerChar) {
+                    if (speelveld.getSpeelVeld()[indexI][++indexY] == spelerChar) {
+                        System.out.println("Horizontaal + 1 eerste if");
                         aantaloprij++;
                     } else {
-                        indexY = laatsteIndexY;
-                        for(i = 0; i <=2; i++) {
-                            if(speelveld.getSpeelVeld()[indexI][--indexY] == spelerChar) {
-                                aantaloprij++;
-                            } else {
-                                break HORIZONTAALCHECK;
-                            }
-                        }
-                        break HORIZONTAALCHECK;
-                    }
-                } catch(ArrayIndexOutOfBoundsException e) {
-                    try {
-                        if(speelveld.getSpeelVeld()[indexI][--indexY] == spelerChar) {
-                            aantaloprij++;
-                        } else {
+
+                        try {
                             indexY = laatsteIndexY;
-                            for(i = 0; i <=2; i++) {
-                                if(speelveld.getSpeelVeld()[indexI][++indexY] == spelerChar) {
+                            for (i = 0; i <= 2; i++) {
+                                if (speelveld.getSpeelVeld()[indexI][--indexY] == spelerChar) {
+                                    System.out.println("Horizontaal + 1 tweede if");
                                     aantaloprij++;
                                 } else {
                                     break HORIZONTAALCHECK;
                                 }
                             }
                             break HORIZONTAALCHECK;
+                        } catch (ArrayIndexOutOfBoundsException exc) {
+                            break HORIZONTAALCHECK;
                         }
-                    } catch(ArrayIndexOutOfBoundsException ex) {
-                        break HORIZONTAALCHECK;
-                    }    
-                }    
-            }
-            
-            
-            
-        }
-        System.out.println("Aantal op rij: " + aantaloprij);
-            if (aantaloprij >= 4) {
-                gewonnen();
-            } else {
-                aantaloprij = 1;
-            }
-          
-        //check verticaal
-        VERTICAALCHECK: while(indexI >= 0 && indexI < 5) {
-            
-            for(int i = 0; i <=2; i++) {
-                
-                try {
-                    if(speelveld.getSpeelVeld()[++indexI][indexY] == spelerChar) {
+                    }
+                } catch (ArrayIndexOutOfBoundsException e) {
+
+                    indexY = laatsteIndexY;
+                    if (speelveld.getSpeelVeld()[indexI][--indexY] == spelerChar) {
+                        System.out.println("Horizontaal + 1 catch block");
                         aantaloprij++;
                     } else {
-                        indexI = laatsteIndexI;
-                        for(i = 0; i <=2; i++) {
-                            if(speelveld.getSpeelVeld()[--indexI][indexY] == spelerChar) {
-                                aantaloprij++;
-                            } else {
-                                break VERTICAALCHECK;
-                            }
-                        }
+                        break HORIZONTAALCHECK;
+                    }
+
+                }
+            }
+
+        }
+        System.out.println("Aantal op rij horizontaal: " + aantaloprij);
+        if (aantaloprij >= 4) {
+            gewonnen();
+        } else {
+            aantaloprij = 1;
+            indexI = laatsteIndexI;
+            indexY = laatsteIndexY;
+        }
+
+        //check verticaal
+        VERTICAALCHECK:
+        while (indexI >= 0 && indexI < 5) {
+
+            for (int i = 0; i <= 2; i++) {
+
+                try {
+                    if (speelveld.getSpeelVeld()[++indexI][indexY] == spelerChar) {
+                        System.out.println("Verticaal + 1");
+                        aantaloprij++;
+                    } else {
+
                         break VERTICAALCHECK;
                     }
-                } catch(ArrayIndexOutOfBoundsException e) {
-                    try {
-                        if(speelveld.getSpeelVeld()[--indexI][indexY] == spelerChar) {
-                            aantaloprij++;
-                        } else {
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    break VERTICAALCHECK;
+                }
+            }
+
+        }
+        System.out.println("Aantal op rij verticaal: " + aantaloprij);
+        if (aantaloprij >= 4) {
+            gewonnen();
+        } else {
+            aantaloprij = 1;
+            indexI = laatsteIndexI;
+            indexY = laatsteIndexY;
+        }
+
+        //check diagonaal1
+        DIAGONAALCHECK1:
+        while (indexY >= 0 && indexY < 6) {
+
+            for (int i = 0; i <= 2; i++) {
+
+                try {
+                    if (speelveld.getSpeelVeld()[++indexI][++indexY] == spelerChar) {
+                        System.out.println("Diagonaal1 + 1 eerste if");
+                        aantaloprij++;
+                    } else {
+
+                        try {
                             indexI = laatsteIndexI;
-                            for(i = 0; i <=2; i++) {
-                                if(speelveld.getSpeelVeld()[++indexI][indexY] == spelerChar) {
+                            indexY = laatsteIndexY;
+                            for (i = 0; i <= 2; i++) {
+                                if (speelveld.getSpeelVeld()[--indexI][--indexY] == spelerChar) {
+                                    System.out.println("Diagonaal1 + 1 tweede if");
                                     aantaloprij++;
                                 } else {
-                                    break VERTICAALCHECK;
+                                    break DIAGONAALCHECK1;
                                 }
                             }
-                            break VERTICAALCHECK;
+                            break DIAGONAALCHECK1;
+                        } catch (ArrayIndexOutOfBoundsException exc) {
+                            break DIAGONAALCHECK1;
                         }
-                    } catch(ArrayIndexOutOfBoundsException ex) {
-                        break VERTICAALCHECK;
-                    }    
-                }    
+                    }
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    indexI = laatsteIndexI;
+                    indexY = laatsteIndexY;
+                    if (speelveld.getSpeelVeld()[--indexI][--indexY] == spelerChar) {
+                        System.out.println("Diagonaal1 + 1 catch block");
+                        aantaloprij++;
+                    } else {
+                        break DIAGONAALCHECK1;
+                    }
+
+                }
             }
-            
-                        
+
         }
-        System.out.println("Aantal op rij: " + aantaloprij);
-            if (aantaloprij >= 4) {
-                gewonnen();
-            } else {
-                aantaloprij = 1;
-            }
-        
-        //check diagonaal1
-       
-        
+        System.out.println("Aantal op rij diagonaal1: " + aantaloprij);
+        if (aantaloprij >= 4) {
+            gewonnen();
+        } else {
+            aantaloprij = 1;
+            indexI = laatsteIndexI;
+            indexY = laatsteIndexY;
+        }
+
         //check diagonaal2
-        
-        
-    }
+        DIAGONAALCHECK2:
+        while (indexY >= 0 && indexY < 6) {
+
+            for (int i = 0; i <= 2; i++) {
+
+                try {
+                    if (speelveld.getSpeelVeld()[++indexI][--indexY] == spelerChar) {
+                        System.out.println("Diagonaal2 + 1 eerste if");
+                        aantaloprij++;
+                    } else {
+
+                        try {
+                            indexI = laatsteIndexI;
+                            indexY = laatsteIndexY;
+                            for (i = 0; i <= 2; i++) {
+                                if (speelveld.getSpeelVeld()[--indexI][++indexY] == spelerChar) {
+                                    System.out.println("Diagonaal2 + 1 tweede if");
+                                    aantaloprij++;
+                                } else {
+                                    break DIAGONAALCHECK2;
+                                }
+                            }
+                            break DIAGONAALCHECK2;
+                        } catch (ArrayIndexOutOfBoundsException exc) {
+                            break DIAGONAALCHECK2;
+                        }
+                    }
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    indexI = laatsteIndexI;
+                    indexY = laatsteIndexY;
+                    if (speelveld.getSpeelVeld()[--indexI][++indexY] == spelerChar) {
+                        System.out.println("Diagonaal2 + 1 catch block");
+                        aantaloprij++;
+                    } else {
+                        break DIAGONAALCHECK2;
+                    }
+
+                }
+            }
+
+        }
+        System.out.println("Aantal op rij diagonaal2: " + aantaloprij);
+        if (aantaloprij >= 4) {
+            gewonnen();
+        } else {
+            aantaloprij = 1;
+            indexI = laatsteIndexI;
+            indexY = laatsteIndexY;
+        }
     
+    }
+
     private void veranderBeurt() {
-        if(speelveld.getBeurt() == Speelveld.Beurt.SPELER1) {
+        if (speelveld.getBeurt() == Speelveld.Beurt.SPELER1) {
             speelveld.setBeurt(Speelveld.Beurt.SPELER2);
         } else {
             speelveld.setBeurt(Speelveld.Beurt.SPELER1);
         }
         spelView.setSpeelveld(speelveld);
     }
-    
+
     public void gewonnen() {
-        //TODO
+        System.out.println("Er heeft iemand gewonnen,hoera!");
     }
 }
