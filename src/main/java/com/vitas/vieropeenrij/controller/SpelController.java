@@ -70,7 +70,7 @@ public class SpelController {
 
         //check horizontaal
         HORIZONTAALCHECK:
-        while (indexY >= 0 && indexY < 6) {
+        while (indexY >= 0 && indexY <= 6) {
 
             for (int i = 0; i <= 2; i++) {
 
@@ -120,7 +120,7 @@ public class SpelController {
 
         //check verticaal
         VERTICAALCHECK:
-        while (indexI >= 0 && indexI < 5) {
+        while (indexI >= 0 && indexI <= 5) {
 
             for (int i = 0; i <= 2; i++) {
 
@@ -149,7 +149,7 @@ public class SpelController {
 
         //check diagonaal1
         DIAGONAALCHECK1:
-        while (indexY >= 0 && indexY < 6) {
+        while (indexY >= 0 && indexY <= 6) {
 
             for (int i = 0; i <= 2; i++) {
 
@@ -176,15 +176,19 @@ public class SpelController {
                         }
                     }
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    indexI = laatsteIndexI;
-                    indexY = laatsteIndexY;
-                    if (speelveld.getSpeelVeld()[--indexI][--indexY] == spelerChar) {
-                        System.out.println("Diagonaal1 + 1 catch block");
-                        aantaloprij++;
-                    } else {
+                    
+                    try {
+                        indexI = laatsteIndexI;
+                        indexY = laatsteIndexY;
+                        if (speelveld.getSpeelVeld()[--indexI][--indexY] == spelerChar) {
+                            System.out.println("Diagonaal1 + 1 catch block");
+                            aantaloprij++;
+                        } else {
+                            break DIAGONAALCHECK1;
+                        }
+                    } catch (ArrayIndexOutOfBoundsException exc) {
                         break DIAGONAALCHECK1;
                     }
-
                 }
             }
 
@@ -200,7 +204,7 @@ public class SpelController {
 
         //check diagonaal2
         DIAGONAALCHECK2:
-        while (indexY >= 0 && indexY < 6) {
+        while (indexY >= 0 && indexY <= 6) {
 
             for (int i = 0; i <= 2; i++) {
 
@@ -227,15 +231,20 @@ public class SpelController {
                         }
                     }
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    indexI = laatsteIndexI;
-                    indexY = laatsteIndexY;
-                    if (speelveld.getSpeelVeld()[--indexI][++indexY] == spelerChar) {
-                        System.out.println("Diagonaal2 + 1 catch block");
-                        aantaloprij++;
-                    } else {
+                    
+                    try {
+                        indexI = laatsteIndexI;
+                        indexY = laatsteIndexY;
+                        if (speelveld.getSpeelVeld()[--indexI][++indexY] == spelerChar) {
+                            System.out.println("Diagonaal2 + 1 catch block");
+                            aantaloprij++;
+                        } else {
+                            break DIAGONAALCHECK2;
+                        }
+
+                    } catch (ArrayIndexOutOfBoundsException exc) {
                         break DIAGONAALCHECK2;
                     }
-
                 }
             }
 
