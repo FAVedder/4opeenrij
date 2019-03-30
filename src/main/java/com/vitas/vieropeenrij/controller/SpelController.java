@@ -98,13 +98,15 @@ public class SpelController {
                 } catch (ArrayIndexOutOfBoundsException e) {
 
                     indexY = laatsteIndexY;
-                    if (speelveld.getSpeelVeld()[indexI][--indexY] == spelerChar) {
-                        System.out.println("Horizontaal + 1 catch block");
-                        aantaloprij++;
-                    } else {
-                        break HORIZONTAALCHECK;
+                    for (i = 0; i <= 2; i++) {
+                        if (speelveld.getSpeelVeld()[indexI][--indexY] == spelerChar) {
+                            System.out.println("Horizontaal + 1 catch block");
+                            aantaloprij++;
+                        } else {
+                            break HORIZONTAALCHECK;
+                        }
                     }
-
+                    break HORIZONTAALCHECK;
                 }
             }
 
@@ -177,18 +179,21 @@ public class SpelController {
                     }
                 } catch (ArrayIndexOutOfBoundsException e) {
                     
-                    try {
-                        indexI = laatsteIndexI;
-                        indexY = laatsteIndexY;
-                        if (speelveld.getSpeelVeld()[--indexI][--indexY] == spelerChar) {
-                            System.out.println("Diagonaal1 + 1 catch block");
-                            aantaloprij++;
-                        } else {
+                    for (i = 0; i <= 2; i++) {
+                        try {
+                            indexI = laatsteIndexI;
+                            indexY = laatsteIndexY;
+                            if (speelveld.getSpeelVeld()[--indexI][--indexY] == spelerChar) {
+                                System.out.println("Diagonaal1 + 1 catch block");
+                                aantaloprij++;
+                            } else {
+                                break DIAGONAALCHECK1;
+                            }
+                        } catch (ArrayIndexOutOfBoundsException exc) {
                             break DIAGONAALCHECK1;
                         }
-                    } catch (ArrayIndexOutOfBoundsException exc) {
-                        break DIAGONAALCHECK1;
                     }
+                    break DIAGONAALCHECK1;
                 }
             }
 
@@ -235,13 +240,16 @@ public class SpelController {
                     try {
                         indexI = laatsteIndexI;
                         indexY = laatsteIndexY;
-                        if (speelveld.getSpeelVeld()[--indexI][++indexY] == spelerChar) {
-                            System.out.println("Diagonaal2 + 1 catch block");
-                            aantaloprij++;
-                        } else {
-                            break DIAGONAALCHECK2;
+                        
+                        for (i = 0; i <= 2; i++) {
+                            if (speelveld.getSpeelVeld()[--indexI][++indexY] == spelerChar) {
+                                System.out.println("Diagonaal2 + 1 catch block");
+                                aantaloprij++;
+                            } else {
+                                break DIAGONAALCHECK2;
+                            }
                         }
-
+                        break DIAGONAALCHECK2;
                     } catch (ArrayIndexOutOfBoundsException exc) {
                         break DIAGONAALCHECK2;
                     }
@@ -270,6 +278,12 @@ public class SpelController {
     }
 
     public void gewonnen() {
-        System.out.println("Er heeft iemand gewonnen,hoera!");
+        if (speelveld.getBeurt() == Speelveld.Beurt.SPELER1) {
+            System.out.println(speler1.getNaam() + " heeft gewonnen,hoera!");
+        } else {
+            System.out.println(speler2.getNaam() + " heeft gewonnen,hoera!");
+        }
+        EindeMenuController eindeMenuController = new EindeMenuController();
+        eindeMenuController.menu(speler1, speler2);
     }
 }
