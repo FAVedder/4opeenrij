@@ -4,7 +4,7 @@ import com.vitas.vieropeenrij.model.Game;
 import com.vitas.vieropeenrij.model.Speelveld;
 import com.vitas.vieropeenrij.model.Speler;
 import com.vitas.vieropeenrij.view.SpelView;
-import util.SaveGame;
+import com.vitas.vieropeenrij.util.SaveGame;
 
 public class SpelController {
 

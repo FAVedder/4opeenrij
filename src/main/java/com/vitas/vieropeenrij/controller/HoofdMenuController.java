@@ -2,7 +2,7 @@ package com.vitas.vieropeenrij.controller;
 
 import com.vitas.vieropeenrij.model.Game;
 import com.vitas.vieropeenrij.view.HoofdMenu;
-import util.LoadGame;
+import com.vitas.vieropeenrij.util.LoadGame;
 
 public class HoofdMenuController {
 

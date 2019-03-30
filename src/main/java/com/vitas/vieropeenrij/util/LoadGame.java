@@ -1,4 +1,4 @@
-package util;
+package com.vitas.vieropeenrij.util;
 
 import com.vitas.vieropeenrij.controller.HoofdMenuController;
 import com.vitas.vieropeenrij.model.Game;
