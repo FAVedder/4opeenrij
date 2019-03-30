@@ -36,7 +36,6 @@ public class HoofdMenu {
             System.out.println("Voer een nummer in.");
             menu();
         }
-        
     }
 
     public int getOptie() {
