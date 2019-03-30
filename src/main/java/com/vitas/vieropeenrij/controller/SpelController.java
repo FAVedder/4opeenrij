@@ -1,8 +1,10 @@
 package com.vitas.vieropeenrij.controller;
 
+import com.vitas.vieropeenrij.model.Game;
 import com.vitas.vieropeenrij.model.Speelveld;
 import com.vitas.vieropeenrij.model.Speler;
 import com.vitas.vieropeenrij.view.SpelView;
+import util.SaveGame;
 
 public class SpelController {
 
@@ -41,6 +43,9 @@ public class SpelController {
         if (invoer == 0) {
             HoofdMenuController hoofdMenuController = new HoofdMenuController();
             hoofdMenuController.start();
+        } else if (invoer == 8) {
+            Game game = new Game(speler1, speler2, speelveld);
+            SaveGame.saveGame(game);
         } else {
             invoer--;
 

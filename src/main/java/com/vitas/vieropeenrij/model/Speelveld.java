@@ -1,6 +1,8 @@
 package com.vitas.vieropeenrij.model;
 
-public class Speelveld {
+import java.io.Serializable;
+
+public class Speelveld implements Serializable {
     
     private char[][] speelVeld = new char[6][7];
     private Beurt beurt;

@@ -1,6 +1,8 @@
 package com.vitas.vieropeenrij.model;
 
-public class Game {
+import java.io.Serializable;
+
+public class Game implements Serializable {
 
     private Speler speler1;
     private Speler speler2;

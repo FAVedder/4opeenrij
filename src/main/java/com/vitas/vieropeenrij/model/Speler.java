@@ -1,6 +1,8 @@
 package com.vitas.vieropeenrij.model;
 
-public class Speler {
+import java.io.Serializable;
+
+public class Speler implements Serializable {
     
     private String naam;
     private int score;
