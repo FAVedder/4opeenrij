@@ -46,6 +46,7 @@ public class SpelController {
         } else if (invoer == 8) {
             Game game = new Game(speler1, speler2, speelveld);
             SaveGame.saveGame(game);
+            System.out.println("Spel opgeslagen.");
         } else {
             invoer--;
 
