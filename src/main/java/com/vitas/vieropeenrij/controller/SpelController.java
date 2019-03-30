@@ -6,6 +6,8 @@ import com.vitas.vieropeenrij.view.SpelView;
 
 public class SpelController {
 
+    private EindeMenuController eindeMenuController = new EindeMenuController();
+    
     private Speler speler1;
     private Speler speler2;
     private Speelveld speelveld;
@@ -29,6 +31,7 @@ public class SpelController {
             int invoer = spelView.getInvoer();
             verwerkInvoer(invoer);
             checkWinst();
+            checkVol();
             veranderBeurt();
         }
     }
@@ -65,8 +68,8 @@ public class SpelController {
         int indexI = laatsteIndexI;
         int indexY = laatsteIndexY;
         
-        System.out.println("laatsteIndexI = " + laatsteIndexI);
-        System.out.println("laatsteIndexY = " + laatsteIndexY);
+//        System.out.println("laatsteIndexI = " + laatsteIndexI);
+//        System.out.println("laatsteIndexY = " + laatsteIndexY);
 
         //check horizontaal
         HORIZONTAALCHECK:
@@ -76,7 +79,7 @@ public class SpelController {
 
                 try {
                     if (speelveld.getSpeelVeld()[indexI][++indexY] == spelerChar) {
-                        System.out.println("Horizontaal + 1 eerste if");
+//                        System.out.println("Horizontaal + 1 eerste if");
                         aantaloprij++;
                     } else {
 
@@ -84,7 +87,7 @@ public class SpelController {
                             indexY = laatsteIndexY;
                             for (i = 0; i <= 2; i++) {
                                 if (speelveld.getSpeelVeld()[indexI][--indexY] == spelerChar) {
-                                    System.out.println("Horizontaal + 1 tweede if");
+//                                    System.out.println("Horizontaal + 1 tweede if");
                                     aantaloprij++;
                                 } else {
                                     break HORIZONTAALCHECK;
@@ -100,7 +103,7 @@ public class SpelController {
                     indexY = laatsteIndexY;
                     for (i = 0; i <= 2; i++) {
                         if (speelveld.getSpeelVeld()[indexI][--indexY] == spelerChar) {
-                            System.out.println("Horizontaal + 1 catch block");
+//                            System.out.println("Horizontaal + 1 catch block");
                             aantaloprij++;
                         } else {
                             break HORIZONTAALCHECK;
@@ -111,7 +114,7 @@ public class SpelController {
             }
 
         }
-        System.out.println("Aantal op rij horizontaal: " + aantaloprij);
+//        System.out.println("Aantal op rij horizontaal: " + aantaloprij);
         if (aantaloprij >= 4) {
             gewonnen();
         } else {
@@ -128,7 +131,7 @@ public class SpelController {
 
                 try {
                     if (speelveld.getSpeelVeld()[++indexI][indexY] == spelerChar) {
-                        System.out.println("Verticaal + 1");
+//                        System.out.println("Verticaal + 1");
                         aantaloprij++;
                     } else {
 
@@ -140,7 +143,7 @@ public class SpelController {
             }
 
         }
-        System.out.println("Aantal op rij verticaal: " + aantaloprij);
+//        System.out.println("Aantal op rij verticaal: " + aantaloprij);
         if (aantaloprij >= 4) {
             gewonnen();
         } else {
@@ -157,7 +160,7 @@ public class SpelController {
 
                 try {
                     if (speelveld.getSpeelVeld()[++indexI][++indexY] == spelerChar) {
-                        System.out.println("Diagonaal1 + 1 eerste if");
+//                        System.out.println("Diagonaal1 + 1 eerste if");
                         aantaloprij++;
                     } else {
 
@@ -166,7 +169,7 @@ public class SpelController {
                             indexY = laatsteIndexY;
                             for (i = 0; i <= 2; i++) {
                                 if (speelveld.getSpeelVeld()[--indexI][--indexY] == spelerChar) {
-                                    System.out.println("Diagonaal1 + 1 tweede if");
+//                                    System.out.println("Diagonaal1 + 1 tweede if");
                                     aantaloprij++;
                                 } else {
                                     break DIAGONAALCHECK1;
@@ -184,7 +187,7 @@ public class SpelController {
                             indexI = laatsteIndexI;
                             indexY = laatsteIndexY;
                             if (speelveld.getSpeelVeld()[--indexI][--indexY] == spelerChar) {
-                                System.out.println("Diagonaal1 + 1 catch block");
+//                                System.out.println("Diagonaal1 + 1 catch block");
                                 aantaloprij++;
                             } else {
                                 break DIAGONAALCHECK1;
@@ -198,7 +201,7 @@ public class SpelController {
             }
 
         }
-        System.out.println("Aantal op rij diagonaal1: " + aantaloprij);
+//        System.out.println("Aantal op rij diagonaal1: " + aantaloprij);
         if (aantaloprij >= 4) {
             gewonnen();
         } else {
@@ -215,7 +218,7 @@ public class SpelController {
 
                 try {
                     if (speelveld.getSpeelVeld()[++indexI][--indexY] == spelerChar) {
-                        System.out.println("Diagonaal2 + 1 eerste if");
+//                        System.out.println("Diagonaal2 + 1 eerste if");
                         aantaloprij++;
                     } else {
 
@@ -224,7 +227,7 @@ public class SpelController {
                             indexY = laatsteIndexY;
                             for (i = 0; i <= 2; i++) {
                                 if (speelveld.getSpeelVeld()[--indexI][++indexY] == spelerChar) {
-                                    System.out.println("Diagonaal2 + 1 tweede if");
+//                                    System.out.println("Diagonaal2 + 1 tweede if");
                                     aantaloprij++;
                                 } else {
                                     break DIAGONAALCHECK2;
@@ -243,7 +246,7 @@ public class SpelController {
                         
                         for (i = 0; i <= 2; i++) {
                             if (speelveld.getSpeelVeld()[--indexI][++indexY] == spelerChar) {
-                                System.out.println("Diagonaal2 + 1 catch block");
+//                                System.out.println("Diagonaal2 + 1 catch block");
                                 aantaloprij++;
                             } else {
                                 break DIAGONAALCHECK2;
@@ -257,7 +260,7 @@ public class SpelController {
             }
 
         }
-        System.out.println("Aantal op rij diagonaal2: " + aantaloprij);
+//        System.out.println("Aantal op rij diagonaal2: " + aantaloprij);
         if (aantaloprij >= 4) {
             gewonnen();
         } else {
@@ -276,6 +279,23 @@ public class SpelController {
         }
         spelView.setSpeelveld(speelveld);
     }
+    
+    public void checkVol() {
+        int legevelden = 0;
+        
+        for(int i = 0; i <= speelveld.getSpeelVeld().length - 1; i++) {
+            for(int y = 0; y <= speelveld.getSpeelVeld()[i].length - 1; y++) {
+                if (speelveld.getSpeelVeld()[i][y] == '-') {
+                    legevelden++;
+                }
+            }    
+        }
+        
+        if (legevelden == 0) {
+            System.out.println("Het speelveld is vol, gelijkspel!");
+            eindeMenuController.menu(speler1, speler2);
+        }
+    }
 
     public void gewonnen() {
         if (speelveld.getBeurt() == Speelveld.Beurt.SPELER1) {
@@ -283,7 +303,6 @@ public class SpelController {
         } else {
             System.out.println(speler2.getNaam() + " heeft gewonnen,hoera!");
         }
-        EindeMenuController eindeMenuController = new EindeMenuController();
         eindeMenuController.menu(speler1, speler2);
     }
 }
