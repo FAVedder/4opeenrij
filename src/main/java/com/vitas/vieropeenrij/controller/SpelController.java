@@ -309,7 +309,7 @@ public class SpelController {
     private void gewonnen() {
         if (speelveld.getBeurt() == Speelveld.Beurt.SPELER1) {
             speler1.setScore(speler1.getScore() + 1);
-            System.out.println(speler1.getNaam() + " heeft gewonnen in " + speler1.getBeurten() + " beurten ,hoera!");
+            System.out.println(speler1.getNaam() + " heeft gewonnen in " + speler1.getBeurten() + " beurten, hoera!");
         } else {
             speler2.setScore(speler2.getScore() + 1);
             System.out.println(speler2.getNaam() + " heeft gewonnen in " + speler2.getBeurten() + " beurten, hoera!");
