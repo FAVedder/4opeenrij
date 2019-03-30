@@ -30,5 +30,4 @@ public class Speler {
         this.beurten = beurten;
     }
     
-        
 }

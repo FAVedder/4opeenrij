@@ -35,6 +35,4 @@ public class EindeMenu {
         return optie;
     }
 
-    
-    
 }

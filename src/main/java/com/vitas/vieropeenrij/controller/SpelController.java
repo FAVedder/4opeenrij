@@ -12,6 +12,7 @@ public class SpelController {
     private Speler speler2;
     private Speelveld speelveld;
     private SpelView spelView;
+    
     private int laatsteIndexI;
     private int laatsteIndexY;
     private char spelerChar;

@@ -10,6 +10,7 @@ public class SpelView {
     private Speler speler1;
     private Speler speler2;
     private Speelveld speelveld;
+    
     private int invoer;
     
     public SpelView(Speler speler1, Speler speler2, Speelveld speelveld) {
@@ -91,11 +92,6 @@ public class SpelView {
 
     public int getInvoer() {
         return invoer;
-    }
-
-    public void setInvoer(int invoer) {
-        this.invoer = invoer;
-    }
-    
+    }    
     
 }
