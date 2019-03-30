@@ -47,7 +47,9 @@ public class SpelController {
 
             if (speelveld.getBeurt() == Speelveld.Beurt.SPELER1) {
                 spelerChar = 'O';
+                speler1.setBeurten(speler1.getBeurten() + 1);
             } else {
+                speler2.setBeurten(speler2.getBeurten() + 1);
                 spelerChar = 'X';
             }
 
@@ -299,9 +301,11 @@ public class SpelController {
 
     public void gewonnen() {
         if (speelveld.getBeurt() == Speelveld.Beurt.SPELER1) {
-            System.out.println(speler1.getNaam() + " heeft gewonnen,hoera!");
+            speler1.setScore(speler1.getScore() + 1);
+            System.out.println(speler1.getNaam() + " heeft gewonnen in " + speler1.getBeurten() + " beurten ,hoera!");
         } else {
-            System.out.println(speler2.getNaam() + " heeft gewonnen,hoera!");
+            speler2.setScore(speler2.getScore() + 1);
+            System.out.println(speler2.getNaam() + " heeft gewonnen in " + speler2.getBeurten() + " beurten, hoera!");
         }
         eindeMenuController.menu(speler1, speler2);
     }
