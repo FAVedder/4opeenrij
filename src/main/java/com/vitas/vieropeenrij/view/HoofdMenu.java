@@ -18,7 +18,8 @@ public class HoofdMenu {
         System.out.println("                          |_|                            |__/");
         System.out.println("Kies een optie:");
         System.out.println("1. Nieuw spel");
-        System.out.println("2. Stoppen");
+        System.out.println("2. Spel hervatten");
+        System.out.println("3. Stoppen");
         System.out.print("Kies een optie: ");
         invoer();
     }
@@ -28,7 +29,7 @@ public class HoofdMenu {
         
         try {
             optie = in.nextInt();
-            if(optie > 2 || optie < 1) {
+            if(optie > 3 || optie < 1) {
             System.out.println("Kies een geldige optie.");
             menu();
             } 
