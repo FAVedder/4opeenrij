@@ -27,17 +27,19 @@ public class SpelView {
             naamHuidigeSpeler = speler2.getNaam(); 
          }
         
-        System.out.printf("Speler 1: " + speler1.getNaam() + " (%3d) O\tSpeler 2: " + speler2.getNaam() + " (%3d) X\n", speler1.getScore(), speler2.getScore());
+        System.out.printf("Speler 1: " + speler1.getNaam() + " O (score %3d)\tSpeler 2: " + speler2.getNaam() + " X (score %3d)\n", speler1.getScore(), speler2.getScore());
         System.out.println("Aan de beurt: " + naamHuidigeSpeler);
-        System.out.println("--------");
-        System.out.printf("\t1\t2\t3\t4\t5\t6\t7\n");
+        System.out.println("---------------");
+        System.out.println(" 1 2 3 4 5 6 7");
+//        System.out.printf("\t1\t2\t3\t4\t5\t6\t7\n");
         for(int i = 0; i <= speelveld.getSpeelVeld().length - 1; i++) {
             for(int y = 0; y <= speelveld.getSpeelVeld()[i].length - 1; y++) {
-                System.out.printf("\t" + speelveld.getSpeelVeld()[i][y]);
+                System.out.printf(" " + speelveld.getSpeelVeld()[i][y]);
+//                System.out.printf("\t" + speelveld.getSpeelVeld()[i][y]);
             }
             System.out.printf("\n");    
         }
-        System.out.println("--------");
+        System.out.println("---------------");
         
     }
     
