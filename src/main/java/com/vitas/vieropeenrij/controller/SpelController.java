@@ -282,7 +282,7 @@ public class SpelController {
         spelView.setSpeelveld(speelveld);
     }
     
-    public void checkVol() {
+    private void checkVol() {
         int legevelden = 0;
         
         for(int i = 0; i <= speelveld.getSpeelVeld().length - 1; i++) {
@@ -299,7 +299,7 @@ public class SpelController {
         }
     }
 
-    public void gewonnen() {
+    private void gewonnen() {
         if (speelveld.getBeurt() == Speelveld.Beurt.SPELER1) {
             speler1.setScore(speler1.getScore() + 1);
             System.out.println(speler1.getNaam() + " heeft gewonnen in " + speler1.getBeurten() + " beurten ,hoera!");
