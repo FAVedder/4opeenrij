@@ -1,12 +1,15 @@
-package com.vitas.vieropeenrij.view;
+package com.favedder.vieropeenrij.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Het menu dat aan het einde van een spel wordt weergegeven.
+ */
 public class EindeMenu {
 
     int optie;
-    
+
     public void menu() {
         System.out.println("Het spel is afgelopen. Nog een keer spelen?");
         System.out.println("1. Nog een spel met dezelfde spelers");
@@ -15,16 +18,16 @@ public class EindeMenu {
         System.out.print("Kies een optie: ");
         invoer();
     }
-    
+
     private void invoer() {
         Scanner in = new Scanner(System.in);
-        
+
         try {
             optie = in.nextInt();
-            if(optie > 3 || optie < 1) {
-            System.out.println("Kies een geldige optie.");
-            menu();
-            } 
+            if (optie > 3 || optie < 1) {
+                System.out.println("Kies een geldige optie.");
+                menu();
+            }
         } catch (InputMismatchException e) {
             System.out.println("Voer een nummer in.");
             menu();

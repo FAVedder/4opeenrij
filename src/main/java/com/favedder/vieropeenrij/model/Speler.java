@@ -1,9 +1,12 @@
-package com.vitas.vieropeenrij.model;
+package com.favedder.vieropeenrij.model;
 
 import java.io.Serializable;
 
+/**
+ * POJO met gegevens over een speler.
+ */
 public class Speler implements Serializable {
-    
+
     private String naam;
     private int score;
     private int beurten;
@@ -31,5 +34,5 @@ public class Speler implements Serializable {
     public void setBeurten(int beurten) {
         this.beurten = beurten;
     }
-    
+
 }
